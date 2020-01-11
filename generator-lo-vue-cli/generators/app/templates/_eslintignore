@@ -1,6 +1,0 @@
-/build/
-/config/
-/dist/
-/*.js
-/src/assets/formExpression/*.js
-/src/components/FormEdit/utils/expression/*.js
