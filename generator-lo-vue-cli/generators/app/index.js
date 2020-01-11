@@ -3,7 +3,7 @@ const path = require("path");
 const Generator = require("yeoman-generator");
 const chalk = require("chalk");
 const yosay = require("yosay");
-const extend = require("deep-extend");
+// Const extend = require("deep-extend");
 const mkdirp = require("mkdirp");
 
 module.exports = class extends Generator {
@@ -60,43 +60,43 @@ module.exports = class extends Generator {
     this.fs.copy(this.templatePath("src/**"), this.destinationPath("src"));
   }
 
-  _writingTest() {
-    this.fs.copyTpl(this.templatePath("test/**"), this.destinationPath("test"));
-  }
+  // _writingTest() {
+  //   this.fs.copyTpl(this.templatePath("test/**"), this.destinationPath("test"));
+  // }
 
-  _writingTheme() {
-    let istopic = this.props.npmtopic;
-    if (istopic === "y") {
-      this.fs.copyTpl(
-        this.templatePath("theme/**"),
-        this.destinationPath("theme")
-      );
-    }
-  }
+  // _writingTheme() {
+  //   let istopic = this.props.npmtopic;
+  //   if (istopic === "y") {
+  //     this.fs.copyTpl(
+  //       this.templatePath("theme/**"),
+  //       this.destinationPath("theme")
+  //     );
+  //   }
+  // }
 
   _writingOther() {
     this.fs.copyTpl(
-      this.templatePath(".babelrc"),
+      this.templatePath("_babelrc"),
       this.destinationPath(".babelrc")
     );
     this.fs.copyTpl(
-      this.templatePath(".editorconfig"),
+      this.templatePath("_editorconfig"),
       this.destinationPath(".editorconfig")
     );
     this.fs.copyTpl(
-      this.templatePath(".eslintignore"),
+      this.templatePath("_eslintignore"),
       this.destinationPath(".eslintignore")
     );
     this.fs.copyTpl(
-      this.templatePath(".eslintrc.js"),
+      this.templatePath("_eslintrc"),
       this.destinationPath(".eslintrc.js")
     );
     this.fs.copyTpl(
-      this.templatePath(".gitignore"),
+      this.templatePath("_gitignore"),
       this.destinationPath(".gitignore")
     );
     this.fs.copyTpl(
-      this.templatePath(".postcssrc.js"),
+      this.templatePath("_postcssrc"),
       this.destinationPath(".postcssrc.js")
     );
     this.fs.copyTpl(
