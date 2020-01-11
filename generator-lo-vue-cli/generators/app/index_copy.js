@@ -36,8 +36,8 @@ module.exports = class extends Generator {
     this._writingBuild();
     this._writingConfig();
     this._writingSrc();
-    // This._writingTest();
-    // this._writingTheme();
+    this._writingTest();
+    this._writingTheme();
     this._writingOther();
     this._writingPkgJosn();
   }
@@ -57,7 +57,62 @@ module.exports = class extends Generator {
   }
 
   _writingSrc() {
-    this.fs.copy(this.templatePath("src/**"), this.destinationPath("src"));
+    this.fs.copy(
+      this.templatePath("src/api/**"),
+      this.destinationPath("src/api")
+    );
+    this.fs.copyTpl(
+      this.templatePath("src/assets/**"),
+      this.destinationPath("src/assets")
+    );
+    this.fs.copyTpl(
+      this.templatePath("src/collect/**"),
+      this.destinationPath("src/collect")
+    );
+    // This.fs.copyTpl(
+    //   this.templatePath("src/components"),
+    //   this.destinationPath("src/components")
+    // );
+    this.fs.copyTpl(
+      this.templatePath("src/router/**"),
+      this.destinationPath("src/router")
+    );
+    this.fs.copyTpl(
+      this.templatePath("src/services/**"),
+      this.destinationPath("src/services")
+    );
+    this.fs.copyTpl(
+      this.templatePath("src/store/**"),
+      this.destinationPath("src/store")
+    );
+    this.fs.copyTpl(
+      this.templatePath("src/units/**"),
+      this.destinationPath("src/units")
+    );
+    this.fs.copyTpl(
+      this.templatePath("src/utils/**"),
+      this.destinationPath("src/utils")
+    );
+    this.fs.copyTpl(
+      this.templatePath("src/views/**"),
+      this.destinationPath("src/views")
+    );
+    this.fs.copy(
+      this.templatePath("src/App.vue"),
+      this.destinationPath("src/App.vue")
+    );
+    let istopic = this.props.npmtopic;
+    if (istopic === "y") {
+      this.fs.copyTpl(
+        this.templatePath("src/main_top.js"),
+        this.destinationPath("src/main.js")
+      );
+    } else {
+      this.fs.copyTpl(
+        this.templatePath("src/main.js"),
+        this.destinationPath("src/main.js")
+      );
+    }
   }
 
   _writingTest() {
@@ -76,27 +131,27 @@ module.exports = class extends Generator {
 
   _writingOther() {
     this.fs.copyTpl(
-      this.templatePath(".babelrc"),
+      this.templatePath("_babelrc"),
       this.destinationPath(".babelrc")
     );
     this.fs.copyTpl(
-      this.templatePath(".editorconfig"),
+      this.templatePath("_editorconfig"),
       this.destinationPath(".editorconfig")
     );
     this.fs.copyTpl(
-      this.templatePath(".eslintignore"),
+      this.templatePath("_eslintignore"),
       this.destinationPath(".eslintignore")
     );
     this.fs.copyTpl(
-      this.templatePath(".eslintrc.js"),
+      this.templatePath("_eslintrc.js"),
       this.destinationPath(".eslintrc.js")
     );
     this.fs.copyTpl(
-      this.templatePath(".gitignore"),
+      this.templatePath("_gitignore"),
       this.destinationPath(".gitignore")
     );
     this.fs.copyTpl(
-      this.templatePath(".postcssrc.js"),
+      this.templatePath("_postcssrc.js"),
       this.destinationPath(".postcssrc.js")
     );
     this.fs.copyTpl(
@@ -104,41 +159,41 @@ module.exports = class extends Generator {
       this.destinationPath("index.html")
     );
     this.fs.copyTpl(
+      this.templatePath("jsconfig.json"),
+      this.destinationPath("jsconfig.json")
+    );
+    this.fs.copyTpl(
       this.templatePath("README.md"),
       this.destinationPath("README.md")
     );
     this.fs.copyTpl(
-      this.templatePath("static/.gitkeep"),
-      this.destinationPath("static/.gitkeep")
+      this.templatePath("static/**"),
+      this.destinationPath("static")
     );
-    // This.fs.copyTpl(
-    //   this.templatePath("static/**"),
-    //   this.destinationPath("static")
-    // );
-    // Let istopic = this.props.npmtopic;
-    // if (istopic === "y") {
-    //   this.fs.copyTpl(
-    //     this.templatePath("element-variables.scss"),
-    //     this.destinationPath("element-variables.scss")
-    //   );
-    // }
+    let istopic = this.props.npmtopic;
+    if (istopic === "y") {
+      this.fs.copyTpl(
+        this.templatePath("element-variables.scss"),
+        this.destinationPath("element-variables.scss")
+      );
+    }
   }
 
   _writingPkgJosn() {
-    // Let istopic = this.props.npmtopic;
-    // if (istopic === "y") {
-    //   const pkg = this.fs.readJSON(this.templatePath("package.json"), {});
-    //   extend(pkg, {
-    //     dependencies: {
-    //       "element-theme-chalk":
-    //         "git+http://geek.glodon.com/scm/glk/gtptheme.git"
-    //     },
-    //     jest: {
-    //       testPathIgnorePatterns: ["templates"]
-    //     }
-    //   });
-    //   this.fs.writeJSON(this.templatePath("package.json"), pkg);
-    // }
+    let istopic = this.props.npmtopic;
+    if (istopic === "y") {
+      const pkg = this.fs.readJSON(this.templatePath("package.json"), {});
+      extend(pkg, {
+        dependencies: {
+          "element-theme-chalk":
+            "git+http://geek.glodon.com/scm/glk/gtptheme.git"
+        },
+        jest: {
+          testPathIgnorePatterns: ["templates"]
+        }
+      });
+      this.fs.writeJSON(this.templatePath("package.json"), pkg);
+    }
 
     this.fs.copyTpl(
       this.templatePath("package.json"),
