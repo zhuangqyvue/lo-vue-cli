@@ -153,7 +153,8 @@ module.exports = class extends Generator {
       this.destinationRoot(this.destinationPath(this.props.name));
     }
   }
-  // Install() {
-  //   this.installDependencies({ bower: false });
-  // }
+
+  Install() {
+    this.installDependencies({ bower: false });
+  }
 };
