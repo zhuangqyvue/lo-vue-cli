@@ -18,8 +18,7 @@
     "vue-cookies": "^1.5.12",
     "vue-infinite-scroll": "^2.0.2",
     "vue-router": "^3.0.1",
-    "vuex": "^2.4.1",
-    "element-theme-chalk": "git+http://geek.glodon.com/scm/glk/gtptheme.git"
+    "vuex": "^2.4.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

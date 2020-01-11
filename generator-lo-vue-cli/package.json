@@ -74,11 +74,11 @@
     "test": "jest"
   },
   "repository": {
-  "type": "git",
-  "url": "git+https://github.com/zhuangqyvue/currentgitversion.git"
+    "type": "git",
+    "url": "git+https://github.com/zhuangqyvue/currentgitversion.git"
   },
   "bugs": {
-  "url": "https://github.com/zhuangqyvue/currentgitversion/issues"
+    "url": "https://github.com/zhuangqyvue/currentgitversion/issues"
   },
   "license": "ISC"
 }
