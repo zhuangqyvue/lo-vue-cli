@@ -75,10 +75,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zhuangqyvue/currentgitversion.git"
+    "url": "git+https://github.com/zhuangqyvue/lo-vue-cli.git"
   },
   "bugs": {
-    "url": "https://github.com/zhuangqyvue/currentgitversion/issues"
+    "url": "https://github.com/zhuangqyvue/lo-vue-cli/issues"
   },
   "license": "ISC"
 }

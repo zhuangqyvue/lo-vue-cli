@@ -16,12 +16,6 @@ module.exports = class extends Generator {
         name: "name",
         message: "项目名称",
         default: "demo"
-      },
-      {
-        type: "input",
-        name: "npmtopic",
-        message: "是否安装自定义饿了么主题?(y/n)",
-        default: "y"
       }
     ];
 
@@ -36,8 +30,6 @@ module.exports = class extends Generator {
     this._writingBuild();
     this._writingConfig();
     this._writingSrc();
-    // This._writingTest();
-    // this._writingTheme();
     this._writingOther();
     this._writingPkgJosn();
   }
@@ -59,20 +51,6 @@ module.exports = class extends Generator {
   _writingSrc() {
     this.fs.copy(this.templatePath("src/**"), this.destinationPath("src"));
   }
-
-  // _writingTest() {
-  //   this.fs.copyTpl(this.templatePath("test/**"), this.destinationPath("test"));
-  // }
-
-  // _writingTheme() {
-  //   let istopic = this.props.npmtopic;
-  //   if (istopic === "y") {
-  //     this.fs.copyTpl(
-  //       this.templatePath("theme/**"),
-  //       this.destinationPath("theme")
-  //     );
-  //   }
-  // }
 
   _writingOther() {
     this.fs.copyTpl(
@@ -111,35 +89,9 @@ module.exports = class extends Generator {
       this.templatePath("static/.gitkeep"),
       this.destinationPath("static/.gitkeep")
     );
-    // This.fs.copyTpl(
-    //   this.templatePath("static/**"),
-    //   this.destinationPath("static")
-    // );
-    // Let istopic = this.props.npmtopic;
-    // if (istopic === "y") {
-    //   this.fs.copyTpl(
-    //     this.templatePath("element-variables.scss"),
-    //     this.destinationPath("element-variables.scss")
-    //   );
-    // }
   }
 
   _writingPkgJosn() {
-    // Let istopic = this.props.npmtopic;
-    // if (istopic === "y") {
-    //   const pkg = this.fs.readJSON(this.templatePath("package.json"), {});
-    //   extend(pkg, {
-    //     dependencies: {
-    //       "element-theme-chalk":
-    //         "git+http://geek.glodon.com/scm/glk/gtptheme.git"
-    //     },
-    //     jest: {
-    //       testPathIgnorePatterns: ["templates"]
-    //     }
-    //   });
-    //   this.fs.writeJSON(this.templatePath("package.json"), pkg);
-    // }
-
     this.fs.copyTpl(
       this.templatePath("package.json"),
       this.destinationPath("package.json")
